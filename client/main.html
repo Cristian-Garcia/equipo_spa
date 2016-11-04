@@ -4,50 +4,78 @@
 
 <body>
 
+{{>landing}}
+
+</body>
+
+<template name="landing">
   <!-- Header -->
-  <header id="top" class="header">
+  <header id="top" class="header-bg">
       <div class="text-vertical-center">
           <h1>Equipo Kerapu</h1>
           <h3>Automated Grouping Tool</h3>
           <br>
-          <a href="" class="btn btn-dark btn-lg">Students</a>
-          <a href="" class="btn btn-dark btn-lg">Professors</a>
+          <button id="student" href="" class="btn btn-dark btn-lg">Students</button>
+          <button id="professor" href="" class="btn btn-dark btn-lg">Professors</button>
+          <div id="srch" class="hidden">
+            {{>search}}
+            {{>questions}}
+          </div>
       </div>
   </header>
-
-  {{>search}}
-
-</body>
-
-<template name="form">
-  <h1>Hello!</h1>
 </template>
 
 <template name="search">
   <!-- Search box Start -->
-<form>
-    <div class="well">
-      <div class="dropdown-menu">
-            <select  id="Quarter">
-                <option value="fall">Fall</option>
-                <option value="winter">Winter</option>
-                <option value="spring">Spring</option>
-            </select>
-        </div>
-
-        <div class="btn-group"> <a class="btn btn-default dropdown-toggle btn-select2" data-toggle="dropdown" href="#">Select a Course <span class="caret"></span></a>
-            <ul class="dropdown-menu" id="Course">
-                <li><a href="#" id="cs140">CS140</a></li>
-                <li><a href="#" id="cs408">CS408</a></li>
-                <li><a href="#" id="cs480">CS480</a></li>
-            </ul>
-        </div>
-        <div class="btn-group">
-            <button type="button" id="btnSearch" class="btn btn-primary">Search</button>
-        </div>
+<form class="dropdown" role="form" method="post">
+    <div class="well text-vertical-center">
+      <div class="form-group">
+        <label>Quarter</label>
+        <select id="quarter" class="input-large form-control">
+          <option value="" selected="selected">Select a quarter</option>
+          <option value="fall">fall</option>
+          <option value="winter">winter</option>
+          <option value="spring">spring</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Courses</label>
+        <select id="course" class="input-large form-control">
+          <option value="">Select a course</option>
+          {{#each courses}}
+          <option value={{course}}>{{course}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div>
+        <button id="btnSearch" class="btn btn-default" type="submit">Submit</button>
+      </div>
     </div>
 </form>
 <!-- Search box End -->
+</template>
+
+<template name="questions">
+  <!-- Questionnaire start -->
+  <div class="well">
+    <fieldset class="radiogroup">
+      <legend>Rate your JavaScript experience</legend>
+      <ul class="radio">
+        <li><input type="radio" id="choice1" value="1" /><label for="choice1">No experience</label></li>
+        <li><input type="radio" id="choice2" value="2" /><label for="choice2">Able to create simple functions</label></li>
+        <li><input type="radio" id="choice3" value="3" /><label for="choice3">Communicate between HTML/CSS</label></li>
+        <li><input type="radio" id="choice4" value="4" /><label for="choice4">Full-Stack</label></li>
+      </ul>
+    </fieldset>
+    <fieldset class="radiogroup">
+      <legend>Rate your AWS experience</legend>
+      <ul class="radio">
+        <li><input type="radio" id="choice1" value="1" /><label for="choice1">Never deployed</label></li>
+        <li><input type="radio" id="choice2" value="2" /><label for="choice2">Followed Tutorial</label></li>
+        <li><input type="radio" id="choice3" value="3" /><label for="choice3">1000-User WebApp</label></li>
+      </ul>
+    </fieldset>
+  </div>
 </template>
 
 <!-- <template name="hello">

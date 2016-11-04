@@ -13,6 +13,8 @@ $("#btnSearch").click(function(){
 	alert($('.btn-select').text()+", "+$('.btn-select2').text());
 });
 
+
+
 // Template.hello.onCreated(function helloOnCreated() {
 //   // counter starts at 0
 //   this.counter = new ReactiveVar(0);

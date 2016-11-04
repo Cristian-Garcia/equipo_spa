@@ -1,0 +1,2 @@
+Template.questions.events({
+});
